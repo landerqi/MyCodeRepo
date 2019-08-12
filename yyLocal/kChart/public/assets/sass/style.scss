@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@import "extends/mixin";
+@import "components/reset";
+@import "partials/kChart";
+html {
+}
+body {
+    color: #000;
+    font: 12px/1.5 tahoma,arial,sans-serif;
+    background-color: #eee;
+}
+
+a {color: #666;}
+li {list-style: none;}
+
+a[href~="tongji.baidu.com"] {
+    display: none;
+}
+
+.loading {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url(images/loading_24.gif) no-repeat;
+}
+
+
+

@@ -1,0 +1,1 @@
+KISSY.config("requires",{"bee-demo/index":["./header/header","./article/article"],"bee-demo/article/article":["node","./article-view","kg/xtemplate/3.3.3/runtime"],"bee-demo/header/header":["node"]});

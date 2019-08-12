@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+    #canvas{
+        border:1px solid #ccc;
+    }
+
+</style>
+</head>
+
+<body>
+<div id="canvasDiv"></div>
+<button id="btn_clear">Clear</button>
+<button id="btn_submit">Submit</button>
+<div id="txt">1</div>
+
+<script language="javascript">
+var toBitmapURL = (function ($fromCharCode, FF, MAX_LENGTH) {
+    function fromCharCode(code) {
+        for (var
+            result = [],
+            i = 0,
+            length = code.length;
+            i < length; i += MAX_LENGTH
+        ) {
+            result.push($fromCharCode.apply(null, code.slice(i, i + MAX_LENGTH)));
+        }
+        return result.join("");
+    }
+    
+    function numberToInvertedBytes(number) {
+        return [
+            number & FF,
+            (number >> 8) & FF,
+            (number >> 16) & FF,
+            (number >> 24) & FF
+        ];
+    }
+    
+    function swapAndInvertY(data, width, height) {
+        /**
+         * Bitmap pixels array is stored "pseudo inverted"
+         * RGBA => BGRA (read as Alpha + RGB)
+         * in few words this canvas pixels array
+         * [
+         *   0, 1,  2,  3,  4,  5,  6,  7,
+         *   8, 9, 10, 11, 12, 13, 14, 15
+         * ]
+         * is stored as bitmap one like
+         * [
+         *   10, 9, 8, 11, 14, 13, 12, 15,
+         *   2, 1, 0,  3,  6,  5,  4,  7
+         * ]
+         */
+        for (var
+            i, j, x0, x1, y0, y1,
+            sizeX = 4 * width,
+            sizeY = height - 1,
+            result = [];
+            height--;
+        ) {
+            y0 = sizeX * (sizeY - height);
+            y1 = sizeX * height;
+            for (i = 0; i < width; i++) {
+                j = i * 4;
+                x0 = y0 + j;
+                x1 = y1 + j;
+                result[x0] = data[x1 + 2];
+                result[x0 + 1] = data[x1 + 1];
+                result[x0 + 2] = data[x1];
+                result[x0 + 3] = data[x1 + 3];
+            }
+        }
+        return result;
+    }
+    
+    function toBitmapURL(canvas) {
+        var
+            width = canvas.width,
+            height = canvas.height,
+            header = [].concat(
+                numberToInvertedBytes(width),
+                numberToInvertedBytes(height),
+                1, 0,
+                32, 0,
+                3, 0, 0, 0,
+                numberToInvertedBytes(
+                    width * height * 4
+                ),
+                19, 11, 0, 0,
+                19, 11, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, FF, 0,
+                0, FF, 0, 0,
+                FF, 0, 0, 0,
+                0, 0, 0, FF,
+                32, 110, 105, 87
+            ),
+            data = swapAndInvertY(
+                canvas.getContext("2d").getImageData(
+                    0, 0, width, height
+                ).data,
+                width,
+                height
+            ),
+            offset
+        ;
+        header = numberToInvertedBytes(header.length).concat(header);
+        offset = 14 + header.length;
+        return "data:image/bmp;base64," + btoa(fromCharCode(
+            [66, 77].concat(
+                numberToInvertedBytes(offset + data.length),
+                0, 0, 0, 0,
+                numberToInvertedBytes(offset),
+                header,
+                data
+            )
+        ));
+    }
+    
+    return toBitmapURL;
+    
+}(String.fromCharCode, 0xFF, 0x7FFF));
+
+(function(){
+    var canvasDiv = document.getElementById('canvasDiv');
+    var canvas = document.createElement('canvas');
+    var canvasWidth = 600, canvasHeight=600;
+    var point = {};
+    point.notFirst = false;
+
+    canvas.setAttribute('width', canvasWidth);
+    canvas.setAttribute('height', canvasHeight);
+    canvas.setAttribute('id', 'canvas');
+    canvasDiv.appendChild(canvas);
+
+    if(typeof G_vmlCanvasManager != 'undefined') {
+
+        canvas = G_vmlCanvasManager.initElement(canvas);
+    }
+    var context = canvas.getContext("2d");
+    var line1 = canvas.getContext("2d");
+    line1.fillStyle = "rgb(0,0,0)";
+    line1.beginPath();
+    line1.moveTo(0,0);
+    line1.lineTo(599,599);
+    line1.lineTo(600,600);
+    line1.lineTo(0,1);
+    line1.fill();
+    line1.beginPath();
+    line1.moveTo(600,0);
+    line1.lineTo(1,599);
+    line1.lineTo(0,600);
+    line1.lineTo(600,1);
+    line1.fill();
+    line1.fillStyle = "rgb(0,0,0)";
+    line1.beginPath();
+    line1.moveTo(0,300);
+    line1.lineTo(600,300);
+    line1.lineTo(600,301);
+    line1.lineTo(0,301);
+    line1.fill();
+    line1.fillStyle = "rgb(0,0,0)";
+    line1.beginPath();
+    line1.moveTo(300,0);
+    line1.lineTo(300,600);
+    line1.lineTo(301,600);
+    line1.lineTo(301,0);
+    line1.fill();
+
+    canvas.addEventListener('touchstart', function(e){
+        e.preventDefault();
+        var touches = e.changedTouches,
+                touch = touches[0];
+        var touchX = touch.pageX;
+        var touchY = touch.pageY;
+        paint = true;
+        addClick(touch.pageX, touch.pageY);
+        redraw();
+    }, false);
+
+    canvas.addEventListener('touchmove', function(e){
+        if(paint){
+            var touches = e.targetTouches;
+            for (var i=0;i<touches.length; i++)
+            {
+                touch = touches[i];
+                addClick(touch.pageX, touch.pageY, true);
+                //redraw();
+            }
+            redraw();
+        }
+    }, false);
+
+    canvas.addEventListener('touchend', function(e){
+        paint = false;
+    },false);
+
+    var clickX = new Array();
+    var clickY = new Array();
+    var clickDrag = new Array();
+    var paint;
+
+    function addClick(x, y, dragging)
+    {
+        clickX.push(x);
+        clickY.push(y);
+        clickDrag.push(dragging);
+    }
+
+    function redraw(){
+        context.strokeStyle = "#000";
+        context.lineJoin = "round";
+        context.lineWidth = 10;
+
+        while (clickX.length > 0 ) {
+            point.bx = point.x;
+            point.by = point.y;
+            point.x = clickX.pop();
+            point.y = clickY.pop();
+            point.drag = clickDrag.pop();
+            context.beginPath();
+            if (point.drag && point.notFirst) {
+                context.moveTo(point.bx, point.by);
+            } else {
+                point.notFirst = true;
+                context.moveTo(point.x - 1, point.y);
+            }
+            context.lineTo(point.x, point.y);
+            context.closePath();
+            context.stroke();
+        }
+    }
+
+    var clear = document.getElementById('btn_clear');
+    clear.addEventListener('click',function(){
+        document.location.reload();
+        //canvas.width = canvas.width;
+        //document.getElementById("txt").innerHTML = "";
+    }, false);
+
+    var submit = document.getElementById('btn_submit');
+    submit.addEventListener('click', function(){
+        //var base64Str = canvas.toDataURL("image/jpeg");
+        //document.getElementById("txt").innerHTML = canvas.toDataURL("image/png");
+        //alert(base64Str);
+        alert(toBitmapURL(canvas));
+    }, false);
+})();
+
+/*window.onbeforeunload = function(){
+    return "Are you sure to leave?" ;
+}*/
+</script>
+</body>
+</html>

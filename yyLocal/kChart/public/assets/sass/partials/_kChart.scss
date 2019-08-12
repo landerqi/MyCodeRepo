@@ -1,0 +1,19 @@
+.wrap {
+  width: 900px;
+  margin: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.chart-head{
+  position: absolute;
+  z-index: 999;
+  height: 38px;
+  background-color: #f2e0e0;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+#chart-body{
+}

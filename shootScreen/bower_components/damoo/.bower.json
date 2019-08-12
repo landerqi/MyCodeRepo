@@ -1,0 +1,37 @@
+{
+  "name": "damoo",
+  "homepage": "https://github.com/jamesliu96/Damoo",
+  "authors": [
+    "James Liu <j@jamesliu.info>"
+  ],
+  "description": "An HTML5 Danmaku Engine",
+  "main": "src/damoo.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "danmaku",
+    "damoo",
+    "html5",
+    "frontend"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "2.1.9",
+  "_release": "2.1.9",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.9",
+    "commit": "29f78124bf4626489b41c29b5da2518bfb5a3362"
+  },
+  "_source": "https://github.com/jamesliu96/Damoo.git",
+  "_target": "~2.1.9",
+  "_originalSource": "damoo",
+  "_direct": true
+}

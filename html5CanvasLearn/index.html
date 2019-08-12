@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/lib/animations.css"/>
+</head>
+<body>
+<div id="mylegend">loading</div>
+<div class="start-bg">
+    <img src="images/start_btn_bg.png" class="expandBig" alt=""/>
+</div>
+</body>
+<script src="lib/lufylegend-1.9.4.min.js"></script>
+<script>
+    var loader;
+    init(50,'mylegend',500,350,main)
+    function main(){
+        loader = new LLoader();
+        loader.addEventListener(LEvent.COMPLETE, loadBitmapdata);
+        loader.load('./images/face.jpg','bitmapData');
+
+        var graphics = new LGraphics();
+        addChild(graphics);
+        graphics.drawRect(1,'#000',[150,150,150,150])
+        graphics.drawRect(1,'#000',[250,250,150,150], true, 'red')
+    }
+    function loadBitmapdata(event){
+        var bitmapdata = new LBitmapData(loader.content, 50, 50, 150, 150);
+        var bitmap = new LBitmap(bitmapdata);
+        var layer = new LSprite();
+        addChild(layer);
+        layer.addChild(bitmap);
+        layer.x = 150;
+        layer.y = 50;
+        layer.alpha = 0.7;
+        layer.rotate = 60;
+    }
+</script>
+</html>

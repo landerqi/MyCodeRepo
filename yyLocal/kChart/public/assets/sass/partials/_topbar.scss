@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/*
+* @name: topbar
+* @description: 定义全站通栏样式.
+* @author: Lin yi(linyi6@yy.com)
+*/
+
+#topbar {
+    position: relative;
+    height: 70px;
+    line-height:70px;
+    background-color: #f6f6f6;
+    .menu {
+        li {float:left;padding:0 20px;height:70px;text-align:center;}
+    }
+}

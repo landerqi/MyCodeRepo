@@ -1,0 +1,41 @@
+@import './shared.scss';
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-input {
+  width: 100px;
+}
+
+.App-textarea-wrap {
+  width: 100px;
+  overflow: scroll;
+  margin-top: 300px;
+}
+
+.App-textarea {
+  overflow: scroll;
+  width: 20000px;
+  pointer-events: default;
+}
+
+.App-header {
+  //background-color: #999;
+  //height: 150px;
+  padding: 20px;
+  color: blue;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

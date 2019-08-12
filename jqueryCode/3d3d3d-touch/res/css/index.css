@@ -1,0 +1,50 @@
+/**
+ * Created by Administrator on 14-8-28.
+ */
+/*颜色*/
+/*口碑热议*/
+/*中国道color*/
+/*尺寸*/
+/* tab切换页 */
+.lecture2-etabs {
+  z-index: 4;
+  border-bottom: 1px solid #bfa79d;
+  background: rgba(255, 255, 255, 0.9);
+  width: 960px;
+}
+.lecture2-etabs li:first-child {
+  margin-left: 278px;
+}
+.lecture2-tab-mb {
+  margin-bottom: 30px;
+}
+.lecture2-tab {
+  float: left;
+  zoom: 1;
+  text-align: center;
+  margin-left: 10px;
+  height: 57px;
+}
+.lecture2-tab span {
+  margin-left: 10px;
+}
+.lecture2-tab a {
+  line-height: 57px;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  font-size: 14px;
+  outline: none;
+}
+.lecture2-tab a:hover {
+  color: #bfa79d;
+}
+.lecture2-tab.active {
+  position: relative;
+}
+.lecture2-tab a.active {
+  color: #bfa79d;
+}
+#lecture2-tab-container {
+  margin-top: 17px;
+}

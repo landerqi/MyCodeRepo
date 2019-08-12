@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+/*
+* @name: footer
+* @description: 定义全站页脚样式.
+* @author: Jin Ye(jinye@yy.com)
+*/
+
+.footer {
+    margin-top: 70px;
+    height: 136px;
+    background-color: #eeeff1;
+    border-top: 1px solid #cdcdcd;
+    .grid-c {
+        padding-top: 45px;
+        text-align: center;
+    }
+    a {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    span {
+        margin: 0 10px;
+        color:#ddd;
+    }
+}

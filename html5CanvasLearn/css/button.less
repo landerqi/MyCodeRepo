@@ -1,0 +1,48 @@
+@charset "utf-8";
+@import "variables.less";
+
+/* button */
+.m-button{
+  display: inline-block;
+  height: 4rem;
+  text-align: center;
+  cursor: pointer;
+  min-width: 7rem;
+  background-color: @buttonColor;
+  border: 0.1rem solid @buttonColor;
+  color: @white;
+  border-radius: @radius;
+  &:active{
+    background-color: @buttonColor - #333;
+    border: 0.1rem solid @buttonColor - #333;
+  }
+}
+.m-button-two{
+  display: inline-block;
+  height: 4rem;
+  text-align: center;
+  cursor: pointer;
+  min-width: 7rem;
+  background-color: @buttonTwoColor;
+  border: 0.1rem solid @buttonTwoColor;
+  color: @white;
+  border-radius: @radius;
+  &:active{
+    background-color: @buttonTwoColor - #333;
+    border: 0.1rem solid @buttonTwoColor - #333;
+  }
+}
+.m-button-empty{
+  display: inline-block;
+  height: 4rem;
+  cursor: pointer;
+  text-align: center;
+  min-width: 7rem;
+  background-color: @white;
+  border-radius: @radius;
+  border:0.1rem solid @ebebeb;
+  color: @fontColor;
+}
+.m-button-content{
+  line-height: 4rem;
+}

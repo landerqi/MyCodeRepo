@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    html,body{
+        height: 100%;
+    }
+    #dm-main {
+        height: 600px;
+        width: 600px;
+        background-color: #ccc;
+    }
+    #dm-screen{
+        height: 400px;
+        width: 400px;
+        margin: 0px auto;
+        padding-top: 20px;
+    }
+</style>
+<body>
+    <div id="dm-main">
+        <div id="dm-screen">
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="./src/damoo.min.js"></script>
+<script >
+    var damoo = Damoo('dm-screen', 'dm-canvas', 20);
+    damoo.start();
+    // Simple
+    damoo.emit("Damoo is awesome!");
+    // With attributes
+    damoo.emit({ text: "Damoo is awesome!", color: "#f49" });
+
+    setTimeout(function(){
+        damoo.emit("沙雕!");
+    }, 2000)
+
+    setInterval(function(){
+        damoo.emit("我是大帅哥！")
+    }, 3000)
+
+    setInterval(function(){
+        // Simple
+        damoo.emit("Damoo is awesome!");
+    }, 2000)
+
+    setInterval(function(){
+        // With attributes
+        damoo.emit({ text: "Damoo is awesome!", color: "#f49" });
+    }, 1000)
+</script>
+</html>

@@ -1,0 +1,14 @@
+{
+    "family": "wxGuoguan",
+    "version": "0.0.1",
+    "name": "wxGuoguan",
+    "private": true,
+    "devDependencies": {
+        "grunt": "^0.4.5",
+        "grunt-cmd-concat": "~0.2.0",
+        "grunt-cmd-transport": "~0.2.0",
+        "grunt-contrib-clean": "~0.4.0",
+        "grunt-contrib-cssmin": "~0.5.0",
+        "grunt-contrib-uglify": "~0.2.0"
+    }
+}

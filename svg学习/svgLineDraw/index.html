@@ -1,0 +1,76 @@
+<html>	
+<head>	
+	<meta charset="UTF-8">
+	<title>使用Javascript来实现素描动画效果</title>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+</head>
+<style>	
+/*添加body背景*/
+
+body{
+  background: #41b1e7;
+}
+    
+</style>
+<body>
+
+<svg class="gbtags" width="300" height="325" viewBox="0 0 300 325" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="path" fill="none"
+        stroke = "#FFFFFF"
+        stroke-width = "2"
+        d = "M62.9 14.9c-25-7.74-56.6 4.8-60.4 24.3-3.73 19.6 21.6 35 39.6 37.6 42.8 6.2 72.9-53.4 116-58.9 65-18.2 191 101 215"
+    />
+</svg>
+
+<!-- 添加一个按钮 -->
+
+<button onclick="rerun();">运行动画</button>
+
+
+</body>
+<script>
+
+/*定义相关Javascript*/
+
+var current_frame, //定义当前帧
+      total_frames, //定义全部帧数
+      path, //定义svg中的唯一path元素
+      length, //定义path所生成的素描长度
+      handle; //定义javascript动画句柄
+
+      path = document.getElementById('path'),
+        length = path.getTotalLength();
+        
+//定义初始化方法
+var init = function(){
+  current_frame = 0;
+  total_frames = 160;
+  path.style.strokeDasharray = length + ' ' + length; //定义dasharray
+  path.style.strokeDashoffset = length; //定义dashoffset
+  handle = 0;
+}
+
+//定义实际的动画绘制方法
+var draw = function(){
+  var progress = current_frame/total_frames;
+  if(progress>1){ //这里定义完成动画
+    window.cancelAnimationFrame(handle);
+  }else{//否则使用reqeuestAnimationFrame来生成动画
+    current_frame++;
+    path.style.strokeDashoffset = Math.floor(length*(1 - progress));
+    
+    handle = window.requestAnimationFrame(draw);
+  }
+
+}
+
+//定义一个重新运行方法
+var rerun = function(){
+  init();
+  draw();
+}
+
+//页面加载即运行
+rerun();
+</script>
+</html>

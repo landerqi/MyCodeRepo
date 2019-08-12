@@ -1,0 +1,156 @@
+<html>	
+<head>	
+	<meta charset="UTF-8">
+	<title>SVG动画实战：开发带有超酷变化过渡效果的收藏按钮</title>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+</head>
+<style>	
+	/*CSS代码片段*/
+body{
+  background: #CFCFCF;
+}
+
+/* 定义按钮CSS */
+
+button{
+  border: 0;
+  background: linear-gradient(
+    to bottom,
+    #555,
+    #111
+  );
+  border-radius: 10px;
+  padding: 10px 30px 12px;
+  display: inline-block;
+  width: 230px;
+  text-align:left;
+}
+
+/* 定义按钮悬浮效果 */
+button:hover, button:active {
+  background: black;
+}
+
+/* 定义SVG图形CSS*/
+button svg{
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* 定义按钮文字 */
+button span{
+  font-size: 32px;
+  position:relative;
+  top: 7px;
+  color: #fff;
+  font-family: "microsoft yahei",Arial,sans-serif;
+}
+
+/* 元素居中效果CSS */
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 定义一个已收藏的文字颜色 */
+button.saved span{
+  color: #53B848;
+}
+
+</style>
+<body>
+		<!-- 生成一个页面按钮 -->
+
+<button id="button" class="center">
+
+  <!-- 添加SVG图形生成按钮图标：这里使用上节课的SVG代码  -->
+  <svg viewBox="0 0 200 200">
+    
+    <polygon
+    fill = "#dd4814"
+    points = "97.3,0 127.4,60.9 194.6,70.7 145.9,118.1 157.4,185.1 97.3,153.5 37.2,185.1 48.6,118.1 0,70.7 67.2,60.9">
+      
+      <animate
+        id = "toCheck"
+        begin = "indefinite"
+        attributeName = "points"
+        dur = "200ms"
+        fill = "freeze"
+        to = "110,58.2 147.3,0 192.1,29 141.7,105.1 118.7,139.8 88.8,185.1 46.1,156.5 0,125 23.5,86.6 71.1,116.7"
+      />
+      
+      <animate
+        id = "toStar"
+        begin = "indefinite"
+        attributeName = "points"
+        dur = "200ms"
+        fill = "freeze"
+        to = "97.3,0 127.4,60.9 194.6,70.7 145.9,118.1 157.4,185.1 97.3,153.5 37.2,185.1 48.6,118.1 0,70.7 67.2,60.9"
+      />
+      
+      <!-- 这里添加颜色变形效果：方法类似上面 -->
+      <animate
+        id = "toGreen"
+        begin = "indefinite"
+        attributeName = "fill"
+        dur = "200ms"
+        fill = "freeze"
+        to = "#53B848"
+      />
+      
+         
+      <animate
+        id = "toRed"
+        begin = "indefinite"
+        attributeName = "fill"
+        dur = "200ms"
+        fill = "freeze"
+        to = "#dd4814"
+      />    
+    </polygon>
+    
+  </svg>
+  
+  <span id="btn-text">收藏</span>
+  
+</button>
+</body>
+<script>	
+	/*处理动画效果JS*/
+
+/* 定义按钮文字和四个动画状态变量 */
+
+var buttonText = document.getElementById("btn-text"),
+  tocheck = document.getElementById("toCheck"),
+  togreen = document.getElementById("toGreen"),
+  tostar = document.getElementById("toStar"),
+  tored = document.getElementById("toRed"),
+  button = document.getElementById("button");
+
+//添加按钮事件
+
+button.addEventListener('click', function(){
+  //这里通过添加一个class定义来判断是否点击
+  if(button.classList.contains('saved')){
+    tostar.beginElement();
+    tored.beginElement();
+    button.classList.remove('saved');
+    buttonText.innerHTML = '收藏';
+  }else{
+    tocheck.beginElement();
+    togreen.beginElement();
+    button.classList.add('saved');
+    buttonText.innerHTML = '已收藏';
+  }
+  
+  
+}, false);
+
+
+</script>
+</html>
