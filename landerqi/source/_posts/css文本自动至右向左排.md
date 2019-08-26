@@ -9,9 +9,9 @@ tags: [css3, 解决问题]
 
 这样就会出现一个明显的bug：我设置的几个`text-overflow`的省略三个点出现在了左边, 就像这样:
 
-<!-- more -->
+<img src="https://fesystem.bs2dl.yy.com/1566811454453508" width="567">
 
-<img src="https://fesystem.bs2dl.yy.com/1566808720373201" width="460">
+<!-- more -->
 
 如上图，我把我的昵称改成了特殊字符，结果发现yy客户端的聊天窗口也出现了同样的问题！我发现事情可能并不简单！
 
