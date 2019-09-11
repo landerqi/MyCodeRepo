@@ -27,6 +27,27 @@ tags: [git, 工具]
 1. **To delete a local branch: git branch -d the_local_branch**
 1. **To remove a remote branch: git push origin --delete the_remote_branch**
 1. **将你的git协议由https变为ssh: git remote set-url origin git@github.com:youraccount/yourproject.git**
+1. **查看某次提交：**
+  ```
+  # 查看某次提交修改的文件
+  git show COMMIT
+  git diff COMMIT^!
+
+  # 对比当前版本和"COMMTI"版本文件差异
+  git diff COMMIT
+  ```
+1. **show log**:
+  ``` shell
+  git log --graph
+  git log --graph --oneline --all
+  git log --graph --pretty=oneline --abbrev-commit | tig # tig只查看，不会输出在shell
+  git log --graph --pretty=oneline --abbrev-commit
+
+  # 或者加个别名到全局配置
+  git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
+  # 就可以直接使用
+  git tree
+  ```
 1. **关联到新的 git 仓库地址:**
   如果有`.git`文件夹，先 `rm -rf .git`
   ```
