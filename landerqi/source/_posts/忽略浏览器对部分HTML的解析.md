@@ -11,10 +11,10 @@ tags: 前端
 
 ###效果：
 1. 未使用`<xmp></xmp>`：
-![](http://landerqi.lefzs.com/xmp_01.jpg)
+![](https://bookstorage.bs2dl.yy.com/26218_1569382131017465893.jpg)
 
 1. 使用`<xmp></xmp>`：
-![](http://landerqi.lefzs.com/xmp_02.jpg)
+![](https://bookstorage.bs2dl.yy.com/26218_1569382176474551863.jpg)
 
 <!-- more -->
 

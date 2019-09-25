@@ -6,12 +6,12 @@ tags: css3
 steps(n,[ start | end ] ]?)函数，这个函数可以把动画平均划分为基本相等的，这个n是一个自然数，意思就是把一个动画平均分成n等分，直到平均地走完这个动画，__与linear不同，linear是不间断的完成一个动画，而steps是一帧一帧执行的。__step-start等同于steps(1,start)，动画分成1步，动画执行时为开始左侧端点的部分为开始；step-end等同于steps(1,end)：动画分成一步，动画执行时以结尾端点为开始，默认值为end。
 
 __w3c图解如下：__
-![](http://landerqi.lefzs.com/step.png)
+![](https://bookstorage.bs2dl.yy.com/26218_1569382900240653501.png)
 <!-- more -->
 <br>
 ###简单用法：
 事先把自己准备的一帧帧动画拼成一张Sprite图：
-![](http://landerqi.lefzs.com/fire_work.png)
+![](https://bookstorage.bs2dl.yy.com/26218_1569382940449485213.png)
 
 <br>
 ###创建动画
@@ -43,6 +43,6 @@ __w3c图解如下：__
 <br>
 
 __执行效果如下：__
-![](http://landerqi.lefzs.com/fire_work.gif)
+![](https://fesystem.bs2dl.yy.com/15693830030885)
 
 [DEMO](http://topics.guoguan.com/zt/2015/tongjiling/index.html) (此DEMO是针对手机做的一个小应用，需用手机观看) ：<br><http://topics.guoguan.com/zt/2015/tongjiling/index.html>

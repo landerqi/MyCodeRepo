@@ -145,7 +145,7 @@ duoshuo_shortname: landerqi(你站点的short_name)
 ##绑定自己的域名
 - 首页你得拥有自己的域名，你可以到万网，或Godaddy这些域名提供商上挑选自己喜欢的域名。
 - 注册DNSPOD，用DNSPOD解析域名：
-![](http://landerqi.lefzs.com/QQ图片20150623144211.png)
+![](https://fesystem.bs2dl.yy.com/156938311221483)
 记录类型选CNAME。
 __如果是在万网或Godaddy上购买的域名，需要修改DNS地址为`f1g1ns1.dnspod.net`和`f1g1ns1.dnspod.net`，DNSPOD才可以成功解析。__
 - 在`source`目录下新建一个名为CNAME的文本文件，里面写入你要绑定的域名，比如`landerqi.com`。
