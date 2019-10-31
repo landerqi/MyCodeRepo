@@ -16,6 +16,7 @@ tags: [git, 工具]
   + windows: __xcopy www backup /exclude:except.txt__ or __robocopy SOURCE DEST /mir /xd node_modules__
   + linux: __rsync -av --progress sourcefolder /destinationfolder --exclude thefoldertoexclude__
 1. **windows关闭nginx:  taskkill /F /IM nginx.exe**
+1. **windows查询nginx是否启动:  tasklist /fi "imagename eq nginx.exe"**
 1. **查到端口占用：NETSTAT.EXE -aon|findstr "3002"**
 1. **结束端口占用进程：taskkill.exe /f /t /im 10768**
 1. **如何使npm intall 不需要输入 sudo: 为当前账户添加node_modules目录读写权限即可。sudo chown -R $(whoami) ~/.npm**
