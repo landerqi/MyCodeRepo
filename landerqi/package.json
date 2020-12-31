@@ -22,7 +22,7 @@
   },
   "scripts": {
     "dev": "hexo s --port=1233",
-    "pub": "hexo g -d",
+    "release": "hexo g -d",
     "g": "hexo g",
     "new": "hexo new",
     "clean": "hexo clean"
