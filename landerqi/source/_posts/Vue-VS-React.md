@@ -5,7 +5,6 @@ tags: [javascript]
 
 之前公司用的都是Vue，最近在新公司使用的是React。基于自己5个月来使用React的一些感受，把React 和 Vue做了一个简单的对比。
 
-
 **Vue 组件：**
 
 ``` javascript
